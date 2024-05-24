@@ -23,7 +23,7 @@ site:
     class: text
     # 具体内容 例如：solitude st-logo / Efu / /img/logo.png
     # Specific content, for example: solitude st-logo / Efu / /img/logo.png
-    custom: Sun JinzeBlog
+    custom: SJ2Blog
   # 网页icon
   # Web icon
   siteIcon: /img/pwa/favicon.ico
@@ -38,7 +38,7 @@ nav:
   # logo group
   group:
    项目: # 分类名称
-     Sun Jinze Blog: https://sunjinze.cn || /img/pwa/favicon.ico # 子菜单名称(submenu name): 链接地址(address) || 图标(icon)
+     SJ2Blog: wanwano.github.io || /img/pwa/favicon.ico # 子菜单名称(submenu name): 链接地址(address) || 图标(icon)
 
   # 中心菜单
   # center menu
@@ -389,7 +389,7 @@ post:
   # footer
   footer:
     enable: true
-    desc: 来自 Efu 的文章 # 介绍文字
+    desc: 来自 Sun Jinze 的文章 # 介绍文字
     button: # 跳转按钮
       enable: true
       name: 了解更多
