@@ -26,10 +26,10 @@ site:
     custom: SJ2Blog
   # 网页icon
   # Web icon
-  siteIcon: /img/pwa/favicon.ico
+  siteIcon: /img/pwa/favicon.png
   # 页脚的Logo、加载动画默认的logo
   # Logo in the footer, default logo for loading animation
-  icon: /img/pwa/favicon.ico
+  icon: /img/pwa/favicon.png
 
 # 导航栏
 # NavBar
@@ -37,8 +37,8 @@ nav:
   # logo 箱子
   # logo group
   group:
-   项目: # 分类名称
-     SJ2Blog: wanwano.github.io || /img/pwa/favicon.ico # 子菜单名称(submenu name): 链接地址(address) || 图标(icon)
+    项目: # 分类名称
+      SJ2Blog: wanwano.github.io || /img/pwa/favicon.png # 子菜单名称(submenu name): 链接地址(address) || 图标(icon)
 
   # 中心菜单
   # center menu
@@ -70,7 +70,7 @@ nav:
     # from left to right
     custom:
     - name: 开往 - 友链接力 # 显示文字 / Displayed text
-      url: https://www.travellings.cn/go.html # 跳转链接 / Jump link
+      url: https://davidz.cn/ # 跳转链接 / Jump link
       icon: st-train-line # 图标 / Icon
       onclick: # 点击事件 / Click event
       id: travellings_button # id
@@ -180,7 +180,7 @@ aside:
     author:
       # 头像
       # Avatar
-      img: /img/avatar.png
+      img: /img/loopy.jpg
       # 表情图片链接
       # Emoticon image link
       # tip: 26x26 size
@@ -193,10 +193,10 @@ aside:
     background: # https://s3.qjqq.cn/47/663af296b85f4.webp!color # 不设置不会展示（仅样式为1、2时有效）
     # 文案1
     # label1
-    content: 分享自己对编程的<b>热爱</b>，对美好生活的<b>向往</b>，对知识海洋<b>探索历程</b>。 # 样式为1时无效
+    content: A <b>log</b>. # 样式为1时无效
     # 文案2
     # label2
-    content2: 相信你可以在这里找到对你有用的知识和教程。 # 样式为1时无效
+    # content2: 相信你可以在这里找到对你有用的知识和教程。 # 样式为1时无效
     # 个人信息卡片底部的小图标，按照例子填写
     # Small icons at the bottom of the personal information card, fill in according to the example
     # 个人信息卡片顶部按钮的打招呼语句
@@ -297,7 +297,7 @@ aside:
     runtimeenable: true
     # 格式：yyyy-MM-dd hh-mm-ss
     # Format: yyyy-MM-dd hh-mm-ss
-    runtime: "2023-04-20 00:00:00"
+    runtime: "2024-05-24 00:00:00"
 
 # 首页文章配置信息
 # Configure information on the home page
@@ -316,8 +316,8 @@ page:
   default: # 默认值 /  Default value
     # 默认图片
     # default cover
-    cover:
-     - /img/default.png # 默认图片 / default cover
+    # cover:
+    #  - /img/default.png # 默认图片 / default cover
 
 # 文章页默认设置
 # post default settings
@@ -851,11 +851,11 @@ pwa:
   enable: false
   manifest: /manifest.json # manifest.json 文件路径
   theme_color: "#006a73" # 主题颜色
-  mask_icon: /img/pwa/favicon.ico # 遮罩图标
-  apple_touch_icon: /img/pwa/favicon.ico # 苹果触摸图标
-  bookmark_icon: /img/pwa/favicon.ico # 书签图标
-  favicon_32_32: /img/pwa/favicon_32.ico # 32x32图标
-  favicon_16_16: /img/pwa/favicon_16.ico # 16x16图标
+  mask_icon: /img/pwa/favicon.png # 遮罩图标
+  apple_touch_icon: /img/pwa/favicon.png # 苹果触摸图标
+  bookmark_icon: /img/pwa/favicon.png # 书签图标
+  favicon_32_32: /img/pwa/favicon32.png # 32x32图标
+  favicon_16_16: /img/pwa/favicon16.png # 16x16图标
 
 # 谷歌广告 (Google Adsense)
 google_adsense:
