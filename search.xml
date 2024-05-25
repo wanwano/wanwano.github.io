@@ -21,7 +21,13 @@
   <entry>
     <title>cisdi01</title>
     <url>/2024/05/24/cisdi01/</url>
-    <content><![CDATA[<h1 id="env"><a href="#env" class="headerlink" title="env"></a>env</h1><p>scoop yyds!</p>
+    <content><![CDATA[<h1 id="env"><a href="#env" class="headerlink" title="env"></a>env</h1><ul>
+<li><a href="https://github.com/ScoopInstaller/Scoop">scoop</a> yyds!</li>
+<li><a href="https://www.jetbrains.com/">Jetbrains</a> + tool</li>
+</ul>
+<h1 id="conf"><a href="#conf" class="headerlink" title="conf"></a>conf</h1><ul>
+<li><a href="https://www.apolloconfig.com/#/zh/design/apollo-introduction">Apollo</a></li>
+</ul>
 ]]></content>
       <tags>
         <tag>cisdi</tag>
