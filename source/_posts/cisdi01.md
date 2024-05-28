@@ -18,10 +18,10 @@ After going through looking for VGA, looking for VGA to HDMI adapter, looking fo
 The server is pre-installed Hikvisionos, the rip-off is that the staff do not know the initial account password, after trying to reset the password.
 
 Enter single-user mode to reset:
-![01](./img/cisdi01/hikServer01.png)
+![01](/img/cisdi01/hikServer01.png)
 
 Press ```e``` and then modify as shown:
-![02](./img/cisdi01/hikServer02.png)
+![02](/img/cisdi01/hikServer02.png)
 
 Then run ```exec /sbin/init``` to return to multi-user mode and log in again with the new password.
 
