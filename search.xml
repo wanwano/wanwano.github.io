@@ -25,6 +25,19 @@
 <li><a href="https://github.com/ScoopInstaller/Scoop">scoop</a> yyds!</li>
 <li><a href="https://www.jetbrains.com/">Jetbrains</a> + tool</li>
 </ul>
+<h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><p>Unbox a Hikvision server, <strong>DS-VE22S-B</strong>.</p>
+<h3 id="Hikvisionos"><a href="#Hikvisionos" class="headerlink" title="Hikvisionos"></a>Hikvisionos</h3><p>After going through looking for VGA, looking for VGA to HDMI adapter, looking for adapter power supply line, finally boot.</p>
+<p>The server is pre-installed Hikvisionos, the rip-off is that the staff do not know the initial account password, after trying to reset the password.</p>
+<p>Enter single-user mode to reset:<br><img src="/./img/cisdi01/hikServer01.png" alt="01"></p>
+<p>Press <code>e</code> and then modify as shown:<br><img src="/./img/cisdi01/hikServer02.png" alt="02"></p>
+<p>Then run <code>exec /sbin/init</code> to return to multi-user mode and log in again with the new password.</p>
+<p>However, I was asked to reinstall a non-custom CentOS system, which was done for nothing.</p>
+<h3 id="USB-not-recognized"><a href="#USB-not-recognized" class="headerlink" title="USB not recognized"></a>USB not recognized</h3><p>After the production of the USB boot disk, once again encountered an outrageous problem: <em>dracut-initqueue timeout.</em></p>
+<p>USB flash drive is not recognized, use <code>blkid</code> to query the current mounting directory of USB flash drive, and press <code>e</code> again in installation mode to enter editing mode:<br>Modified <code>hd:LABEL=CentOS\... quiet</code> to the <code>hd:/mount directory quiet</code>.</p>
+<h3 id="Network-configuration"><a href="#Network-configuration" class="headerlink" title="Network configuration"></a>Network configuration</h3><p>The purpose is to connect to the same switch computer can remotely log in to the server, the switch is not connected to the router, that is, can not connect to the external network.</p>
+<p>So instead of using DHCP, we manually configured the static ip addresses of the servers and computers.<code>nmtui</code>,<code>nmcli</code>, or directly modify the configuration file.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">addr: 192.168.1.2</span><br><span class="line">mask: 255.255.255.0</span><br><span class="line">gateway: 192.168.1.1</span><br></pre></td></tr></table></figure>
+
 <h1 id="conf"><a href="#conf" class="headerlink" title="conf"></a>conf</h1><ul>
 <li><a href="https://www.apolloconfig.com/#/zh/design/apollo-introduction">Apollo</a></li>
 </ul>
