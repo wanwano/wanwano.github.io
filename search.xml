@@ -28,8 +28,8 @@
 <h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><p>Unbox a Hikvision server, <strong>DS-VE22S-B</strong>.</p>
 <h3 id="Hikvisionos"><a href="#Hikvisionos" class="headerlink" title="Hikvisionos"></a>Hikvisionos</h3><p>After going through looking for VGA, looking for VGA to HDMI adapter, looking for adapter power supply line, finally boot.</p>
 <p>The server is pre-installed Hikvisionos, the rip-off is that the staff do not know the initial account password, after trying to reset the password.</p>
-<p>Enter single-user mode to reset:<br><img src="/./img/cisdi01/hikServer01.png" alt="01"></p>
-<p>Press <code>e</code> and then modify as shown:<br><img src="/./img/cisdi01/hikServer02.png" alt="02"></p>
+<p>Enter single-user mode to reset:<br><img src="/img/cisdi01/hikServer01.png" alt="01"></p>
+<p>Press <code>e</code> and then modify as shown:<br><img src="/img/cisdi01/hikServer02.png" alt="02"></p>
 <p>Then run <code>exec /sbin/init</code> to return to multi-user mode and log in again with the new password.</p>
 <p>However, I was asked to reinstall a non-custom CentOS system, which was done for nothing.</p>
 <h3 id="USB-not-recognized"><a href="#USB-not-recognized" class="headerlink" title="USB not recognized"></a>USB not recognized</h3><p>After the production of the USB boot disk, once again encountered an outrageous problem: <em>dracut-initqueue timeout.</em></p>
