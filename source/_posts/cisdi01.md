@@ -45,6 +45,25 @@ mask: 255.255.255.0
 gateway: 192.168.1.1
 ```
 
+Ahh... Sudden change, and touch out an AC650 wireless USB, to let the server connect to the external network. Damn TP Link doesn't provide Linux drivers. After searching, really let me find, thanks to the [elder brother](https://github.com/brektrou/rtl8821CU) to provide the drive.
+
+This driver can only be used on Linux 4.4 kernel, according to my tests, too high or too low version will not work. Damn officials don't maintain old RPMS.
+
+Re-create the kernel configuration after installation. Run ```grub2-mkconfig -o /boot/grub2/grub.cfg```, and then ```reboot``` to see kernel version changes using ```uname -r```.
+
+Also, run ```rpm -qa | grep kernel``` to see which kernels are installed, and use ```yum remove``` to remove the useless ones.
+
+After downloading the driver, we execute
+
+```
+make
+sudo make install
+sudo modprobe 8821cu
+```
+
+Run the ```lsusb``` command to view the number of the NIC and switch the mode of the USB NIC to the wireless NIC mode:
+```sudo usb_modeswitch -KW -v 0bda -p 1a2b```.
+
 # conf
 
 - [Apollo](https://www.apolloconfig.com/#/zh/design/apollo-introduction)
