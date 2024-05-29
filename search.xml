@@ -20,6 +20,14 @@
 <p>So instead of using DHCP, we manually configured the static ip addresses of the servers and computers.<code>nmtui</code>,<code>nmcli</code>, or directly modify the configuration file.</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">addr: 192.168.1.2</span><br><span class="line">mask: 255.255.255.0</span><br><span class="line">gateway: 192.168.1.1</span><br></pre></td></tr></table></figure>
 
+<p>Ahh… Sudden change, and touch out an AC650 wireless USB, to let the server connect to the external network. Damn TP Link doesn’t provide Linux drivers. After searching, really let me find, thanks to the <a href="https://github.com/brektrou/rtl8821CU">elder brother</a> to provide the drive.</p>
+<p>This driver can only be used on Linux 4.4 kernel, according to my tests, too high or too low version will not work. Damn officials don’t maintain old RPMS.</p>
+<p>Re-create the kernel configuration after installation. Run <code>grub2-mkconfig -o /boot/grub2/grub.cfg</code>, and then <code>reboot</code> to see kernel version changes using <code>uname -r</code>.</p>
+<p>Also, run <code>rpm -qa | grep kernel</code> to see which kernels are installed, and use <code>yum remove</code> to remove the useless ones.</p>
+<p>After downloading the driver, we execute</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo modprobe 8821cu</span><br></pre></td></tr></table></figure>
+
+<p>Run the <code>lsusb</code> command to view the number of the NIC and switch the mode of the USB NIC to the wireless NIC mode:<br><code>sudo usb_modeswitch -KW -v 0bda -p 1a2b</code>.</p>
 <h1 id="conf"><a href="#conf" class="headerlink" title="conf"></a>conf</h1><ul>
 <li><a href="https://www.apolloconfig.com/#/zh/design/apollo-introduction">Apollo</a></li>
 </ul>
