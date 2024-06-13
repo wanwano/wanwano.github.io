@@ -64,8 +64,11 @@ sudo modprobe 8821cu
 Run the ```lsusb``` command to view the number of the NIC and switch the mode of the USB NIC to the wireless NIC mode:
 ```sudo usb_modeswitch -KW -v 0bda -p 1a2b```.
 
-# conf
+# knowledge
 
 - [Apollo](https://www.apolloconfig.com/#/zh/design/apollo-introduction)
+- [Live streaming protocol](https://www.cnblogs.com/yangchin9/p/18153222)
+- Principles of lambda, method references, closures, and stream 
+    *   **Generate classes, objects, and methods**
 
 
