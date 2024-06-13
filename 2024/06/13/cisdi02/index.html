@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>cisdi02 | Sun Jinze Blog</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.11.0"><!-- inject head--><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><!-- aplayer--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="serverMainly configure the network, the company with certified WiFi is really annoying, restart the server is very troublesome. Network configurationT"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="Sun Jinze Blog"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(
+    "%c Program: Hexo %c Theme: Solitude %c Version: v1.11.0",
+    "border-radius:5px 0 0 5px;padding: 5px 10px;color:white;background:#ff3842;",
+    "padding: 5px 10px;color:white;background:#3e9f50;",
+    "padding: 5px 10px;color:white;background:#0084ff;border-radius:0 5px 5px 0",
+)
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+    
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+    
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+    
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+    
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+        
+                if (name && keyObj[name]) return
+        
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+        }
+    })()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2024-05-24 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.webp'
+    },
+    copyright: {"limit":50,"author":"作者: Sun Jinze","link":"链接: ","source":"来源: Sun Jinze Blog","info":"著作权归作者所有。 商业转载请联系作者获得授权，非商业转载请注明出处。"},
+    highlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+        syntax: 'highlight.js'
+    },
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。"}},
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: [],
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false
+}</script><meta name="generator" content="Hexo 7.2.0"></head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="solitude st-close-fill"></i></div><div class="button-group"><div class="console-btn-item"><span class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换"><i class="solitude st-moon-clear-fill"></i></span></div><div class="console-btn-item" id="consoleHideAside"><span class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制"><i class="solitude st-side-bar-fill"></i></span></div><div class="console-btn-item" id="consoleMusic" onclick="sco.musicToggle()"><span class="music-switch" title="音乐开关"><i class="solitude st-disc-fill"></i></span></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/wanwano.github.io" title="SJ2Blog"><img class="nolazyload back-menu-item-icon" src="/img/pwa/favicon.png" alt="SJ2Blog"><span class="back-menu-item-text">SJ2Blog</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/cisdi/">cisdi<sup>2</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude st-more-fill"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="/wanwano.github.io" title="SJ2Blog"><img class="nolazyload back-menu-item-icon" src="/img/pwa/favicon.png" alt="SJ2Blog"><span class="back-menu-item-text">SJ2Blog</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">SJ2Blog</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">cisdi02</a></div></div><div id="menus"></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="travellings_button"><a class="site-page" target="_blank" rel="noopener" href="https://davidz.cn/" title=""><i class="solitude st-train-line"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude st-search-line"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude st-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude st-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/img/default.png" alt="cisdi02"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/cisdi/"><span class="tags-name tags-punctuation">cisdi</span></a></div></div></div></div><h1 class="post-title">cisdi02</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-wordcount"><span class="post-meta-separator"></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><p>Mainly configure the network, the company with certified WiFi is really annoying, restart the server is very troublesome.</p>
+<h3 id="Network-configuration"><a href="#Network-configuration" class="headerlink" title="Network configuration"></a>Network configuration</h3><p>There are two points that need to be addressed.</p>
+<ul>
+<li>the server can access the internet</li>
+<li>people in the group can easily connect to the server</li>
+</ul>
+<p>For the first point, I connected the server with a networked host box to the switch, configured <strong>NAT</strong> so that the box acted as a gateway, which was easy to implement.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo 1 &gt; /proc/sys/net/ipv4/ip_forward</span><br><span class="line"></span><br><span class="line">iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE</span><br><span class="line">iptables -A FORWARD -i eth0 -o wlan0 -j ACCEPT</span><br><span class="line">iptables -A FORWARD -i wlan0 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+<p>I was going to build a <strong>vpn</strong> to implement the second point, but I ran into a lot of problems. I first used <a target="_blank" rel="noopener" href="https://www.wireguard.com/">WireGuard</a> to configure the box as a server and the server and PC as a client, but strangely the clients couldn’t communicate with each other. So I deployed the <a target="_blank" rel="noopener" href="https://www.wireguard.com/">WireGuard</a> server to the cloud again, and this time it worked, but I ran into a more difficult problem. The WireGuard tunnel uses the UDP protocol for communication. However, the domestic carrier’s QoS policy restricts the UDP rate limiting. As a result, the WireGuard tunnel cannot be used properly. Projects such as <a target="_blank" rel="noopener" href="https://github.com/dndx/phantun">Phantun</a> and <a target="_blank" rel="noopener" href="https://github.com/wangyu-/udp2raw">udp2raw</a> can be used to disguise UDP traffic, but with added complexity. Therefore, I considered using <a target="_blank" rel="noopener" href="https://openvpn.net/">OpenVPN</a>, but currently encountered a problem that the client can connect to the vpn but cannot access the Internet normally after specifying the client ip. <strong>#TODO</strong></p>
+<h1 id="project"><a href="#project" class="headerlink" title="project"></a>project</h1><h3 id="Dahua"><a href="#Dahua" class="headerlink" title="Dahua"></a>Dahua</h3><p>Connect with <a target="_blank" rel="noopener" href="https://open-icc.dahuatech.com/#/home">Dahua ICC platform</a> to achieve real-time preview and video playback functions. When the implementation can be a unified interface forward all requests can also be designed separately for each interface to do customized processing.</p>
+<p>show:</p>
+<p><img src="/img/cisdi02/dahua.png" alt="dahua show"></p>
+<h3 id="Collabora"><a href="#Collabora" class="headerlink" title="Collabora"></a>Collabora</h3><p>Configuring <a target="_blank" rel="noopener" href="https://www.collaboraoffice.com/">Collabora Online</a> and implementing the <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/microsoft-365/cloud-storage-partner-program/rest/">WOPI</a> protocol enables online previews of various file types.</p>
+<p><strong>WOPI REST API:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * wopi CheckFileInfo endpoint</span><br><span class="line"> * &lt;p&gt;</span><br><span class="line"> * Returns info about the file with the given document id.</span><br><span class="line"> * The response has to be in JSON format and at a minimum it needs to include</span><br><span class="line"> * the file name and the file size.</span><br><span class="line"> * The CheckFileInfo wopi endpoint is triggered by a GET request at</span><br><span class="line"> * https://HOSTNAME/wopi/files/&lt;id&gt;</span><br><span class="line"> */</span><br><span class="line">@GetMapping(&quot;/wopi/files/&#123;id&#125;&quot;)</span><br><span class="line">public ResponseEntity checkFileInfo(@PathVariable String id, </span><br><span class="line">@RequestParam(&quot;access_token&quot;) String token)&#123;&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * wopi GetFile endpoint</span><br><span class="line"> * &lt;p&gt;</span><br><span class="line"> * Given a request access token and a document id, sends back the contents of the </span><br><span class="line"> * file.</span><br><span class="line"> * The GetFile wopi endpoint is triggered by a request with a GET verb at</span><br><span class="line"> * https://HOSTNAME/wopi/files/&lt;id&gt;/contents</span><br><span class="line"> */</span><br><span class="line">@GetMapping(&quot;/wopi/files/&#123;id&#125;/contents&quot;)</span><br><span class="line">public ResponseEntity getFileContent(@PathVariable int id, </span><br><span class="line">@RequestParam(&quot;access_token&quot;) String token)&#123;&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * wopi PutFile endpoint</span><br><span class="line"> * &lt;p&gt;</span><br><span class="line"> * Given a request access token and a document id, replaces the files with the POST</span><br><span class="line"> * request body.</span><br><span class="line"> * The PutFile wopi endpoint is triggered by a request with a POST verb at</span><br><span class="line"> * https://HOSTNAME/wopi/files/&lt;id&gt;/contents</span><br><span class="line"> */</span><br><span class="line">@PostMapping(&quot;/wopi/files/&#123;id&#125;/contents&quot;)</span><br><span class="line">public ResponseEntity&lt;Void&gt; putFile(@PathVariable int id, </span><br><span class="line">@RequestBody byte[] content)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>show:</p>
+<p><img src="/img/cisdi02/collabora.png" alt="dahua show"></p>
+<h1 id="knowledge"><a href="#knowledge" class="headerlink" title="knowledge"></a>knowledge</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://nginx.org/en/">Nginx</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">Sun Jinze Blog</div><div class="post-copyright__author_desc">Personal Blog</div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">Sun Jinze Blog</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/cisdi/"><span class="tags-punctuation"></span>cisdi<span class="tagsPageCount">2</span></a></div></div><div class="social-share"></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/05/24/cisdi01/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">cisdi01</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src="/img/loopy.jpg"><div class="avatar-sticker"><img class="avatar-sticker-img" src="https://7.isyangs.cn/34/65f2e4e0423cc-34.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">A <b>log</b>.</div><div class="author-info__description2">相信你可以在这里找到对你有用的知识和教程。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">Sun Jinze</div><div class="author-info__desc">Personal Blog</div></a><div class="card-info-social-icons is-center"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude st-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#server"><span class="toc-text">server</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Network-configuration"><span class="toc-text">Network configuration</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#project"><span class="toc-text">project</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dahua"><span class="toc-text">Dahua</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Collabora"><span class="toc-text">Collabora</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#knowledge"><span class="toc-text">knowledge</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude st-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/06/13/cisdi02/" title="cisdi02"><img alt="cisdi02" src="/img/default.png"></a><div class="content"><a class="title" href="/2024/06/13/cisdi02/" title="cisdi02">cisdi02</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/24/cisdi01/" title="cisdi01"><img alt="cisdi01" src="/img/default.png"></a><div class="content"><a class="title" href="/2024/05/24/cisdi01/" title="cisdi01">cisdi01</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/24/hello-world/" title="Hello World"><img alt="Hello World" src="/img/default.png"></a><div class="content"><a class="title" href="/2024/05/24/hello-world/" title="Hello World">Hello World</a></div></div></div></div></div></div></main><footer id="footer"><div id="st-footer-bar"><div class="footer-logo"><span>SJ2Blog</span></div><div class="footer-bar-description">来自 Sun Jinze 的文章</div><a class="footer-bar-link" href="/about/">了解更多</a></div><div id="footer_deal"></div><div id="st-footer"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2024 By&nbsp;<a class="footer-bar-link" href="/">Sun Jinze</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/valor-x/hexo-theme-solitude" alt="主题">主题</a><a class="footer-bar-link cc" href="/null" aria-label="copyright"><i class="solitude st-copyright-line"></i><i class="solitude st-creative-commons-by-line"></i><i class="solitude st-creative-commons-nc-line"></i><i class="solitude st-creative-commons-nd-line"></i></a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=1.11.0"></script><script src="/js/main.js?v=1.11.0"></script><script src="/js/third_party/waterfall.min.js?v=1.11.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/third_party/universe.min.js?v=1.11.0"></script><script>dark()
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script>var meting_api = 'https://meting.qjqq.cn/?server=:server&type=:type&id=:id&auth=:auth&r=:r';</script><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/meting/2.0.1/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><div class="js-pjax"></div></div><!-- newest comment--><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ['title','#body-wrap','#site-config','meta[name="description"]','.js-pjax','meta[property^="og:"]','#config-diff'],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    is_rm && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude st-close-fill"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=1.11.0"></script><!-- Tianli-Talk--><!-- music--><div class="needEndHide" id="nav-music" onclick="sco.musicToggle()"><div id="nav-music-hoverTips">音乐已暂停</div><meting-js id="8407304077" server="netease" type="playlist" mutex="true" preload="none" data-lrctype="0" order="random" theme="var(--efu-main)"></meting-js></div></body></html><script>const posts=["2024/06/13/cisdi02/","2024/05/24/cisdi01/","2024/05/24/hello-world/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); }</script>

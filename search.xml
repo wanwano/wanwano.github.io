@@ -28,8 +28,43 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo modprobe 8821cu</span><br></pre></td></tr></table></figure>
 
 <p>Run the <code>lsusb</code> command to view the number of the NIC and switch the mode of the USB NIC to the wireless NIC mode:<br><code>sudo usb_modeswitch -KW -v 0bda -p 1a2b</code>.</p>
-<h1 id="conf"><a href="#conf" class="headerlink" title="conf"></a>conf</h1><ul>
+<h1 id="knowledge"><a href="#knowledge" class="headerlink" title="knowledge"></a>knowledge</h1><ul>
 <li><a href="https://www.apolloconfig.com/#/zh/design/apollo-introduction">Apollo</a></li>
+<li><a href="https://www.cnblogs.com/yangchin9/p/18153222">Live streaming protocol</a></li>
+<li>Principles of lambda, method references, closures, and stream <ul>
+<li><strong>Generate classes, objects, and methods</strong></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>cisdi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cisdi02</title>
+    <url>/2024/06/13/cisdi02/</url>
+    <content><![CDATA[<h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><p>Mainly configure the network, the company with certified WiFi is really annoying, restart the server is very troublesome.</p>
+<h3 id="Network-configuration"><a href="#Network-configuration" class="headerlink" title="Network configuration"></a>Network configuration</h3><p>There are two points that need to be addressed.</p>
+<ul>
+<li>the server can access the internet</li>
+<li>people in the group can easily connect to the server</li>
+</ul>
+<p>For the first point, I connected the server with a networked host box to the switch, configured <strong>NAT</strong> so that the box acted as a gateway, which was easy to implement.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo 1 &gt; /proc/sys/net/ipv4/ip_forward</span><br><span class="line"></span><br><span class="line">iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE</span><br><span class="line">iptables -A FORWARD -i eth0 -o wlan0 -j ACCEPT</span><br><span class="line">iptables -A FORWARD -i wlan0 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+<p>I was going to build a <strong>vpn</strong> to implement the second point, but I ran into a lot of problems. I first used <a href="https://www.wireguard.com/">WireGuard</a> to configure the box as a server and the server and PC as a client, but strangely the clients couldn’t communicate with each other. So I deployed the <a href="https://www.wireguard.com/">WireGuard</a> server to the cloud again, and this time it worked, but I ran into a more difficult problem. The WireGuard tunnel uses the UDP protocol for communication. However, the domestic carrier’s QoS policy restricts the UDP rate limiting. As a result, the WireGuard tunnel cannot be used properly. Projects such as <a href="https://github.com/dndx/phantun">Phantun</a> and <a href="https://github.com/wangyu-/udp2raw">udp2raw</a> can be used to disguise UDP traffic, but with added complexity. Therefore, I considered using <a href="https://openvpn.net/">OpenVPN</a>, but currently encountered a problem that the client can connect to the vpn but cannot access the Internet normally after specifying the client ip. <strong>#TODO</strong></p>
+<h1 id="project"><a href="#project" class="headerlink" title="project"></a>project</h1><h3 id="Dahua"><a href="#Dahua" class="headerlink" title="Dahua"></a>Dahua</h3><p>Connect with <a href="https://open-icc.dahuatech.com/#/home">Dahua ICC platform</a> to achieve real-time preview and video playback functions. When the implementation can be a unified interface forward all requests can also be designed separately for each interface to do customized processing.</p>
+<p>show:</p>
+<p><img src="/img/cisdi02/dahua.png" alt="dahua show"></p>
+<h3 id="Collabora"><a href="#Collabora" class="headerlink" title="Collabora"></a>Collabora</h3><p>Configuring <a href="https://www.collaboraoffice.com/">Collabora Online</a> and implementing the <a href="https://learn.microsoft.com/en-us/microsoft-365/cloud-storage-partner-program/rest/">WOPI</a> protocol enables online previews of various file types.</p>
+<p><strong>WOPI REST API:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * wopi CheckFileInfo endpoint</span><br><span class="line"> * &lt;p&gt;</span><br><span class="line"> * Returns info about the file with the given document id.</span><br><span class="line"> * The response has to be in JSON format and at a minimum it needs to include</span><br><span class="line"> * the file name and the file size.</span><br><span class="line"> * The CheckFileInfo wopi endpoint is triggered by a GET request at</span><br><span class="line"> * https://HOSTNAME/wopi/files/&lt;id&gt;</span><br><span class="line"> */</span><br><span class="line">@GetMapping(&quot;/wopi/files/&#123;id&#125;&quot;)</span><br><span class="line">public ResponseEntity checkFileInfo(@PathVariable String id, </span><br><span class="line">@RequestParam(&quot;access_token&quot;) String token)&#123;&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * wopi GetFile endpoint</span><br><span class="line"> * &lt;p&gt;</span><br><span class="line"> * Given a request access token and a document id, sends back the contents of the </span><br><span class="line"> * file.</span><br><span class="line"> * The GetFile wopi endpoint is triggered by a request with a GET verb at</span><br><span class="line"> * https://HOSTNAME/wopi/files/&lt;id&gt;/contents</span><br><span class="line"> */</span><br><span class="line">@GetMapping(&quot;/wopi/files/&#123;id&#125;/contents&quot;)</span><br><span class="line">public ResponseEntity getFileContent(@PathVariable int id, </span><br><span class="line">@RequestParam(&quot;access_token&quot;) String token)&#123;&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * wopi PutFile endpoint</span><br><span class="line"> * &lt;p&gt;</span><br><span class="line"> * Given a request access token and a document id, replaces the files with the POST</span><br><span class="line"> * request body.</span><br><span class="line"> * The PutFile wopi endpoint is triggered by a request with a POST verb at</span><br><span class="line"> * https://HOSTNAME/wopi/files/&lt;id&gt;/contents</span><br><span class="line"> */</span><br><span class="line">@PostMapping(&quot;/wopi/files/&#123;id&#125;/contents&quot;)</span><br><span class="line">public ResponseEntity&lt;Void&gt; putFile(@PathVariable int id, </span><br><span class="line">@RequestBody byte[] content)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>show:</p>
+<p><img src="/img/cisdi02/collabora.png" alt="dahua show"></p>
+<h1 id="knowledge"><a href="#knowledge" class="headerlink" title="knowledge"></a>knowledge</h1><ul>
+<li><a href="https://nginx.org/en/">Nginx</a></li>
 </ul>
 ]]></content>
       <tags>
