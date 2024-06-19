@@ -80,7 +80,166 @@ Configuring [Collabora Online](https://www.collaboraoffice.com/) and implementin
 
 show:
 
-![dahua show](/img/cisdi02/collabora.png)
+![collabora show](/img/cisdi02/collabora.png)
+
+### Collabora & proxy 
+
+After the base demo, I needed to deploy the service to a multi-tier agent environment.
+
+Firstly, collabora online is deployed in an Intranet server, I need to do [frp](https://github.com/fatedier/frp), and the public network frp server is configured as
+```
+frps.toml
+
+bindAddr = "0.0.0.0"
+bindPort = 7000
+#kcpBindPort = 7000
+quicBindPort = 7000
+
+vhostHTTPPort = 8088
+vhostHTTPSPort = 4433
+
+transport.maxPoolCount = 2000
+transport.tcpMux = true
+transport.tcpMuxKeepaliveInterval = 60
+transport.tcpKeepalive = 7200
+transport.tls.force = false
+
+webServer.addr = "0.0.0.0"
+webServer.port = 7500
+webServer.user = "admin"
+webServer.password = "admin"
+webServer.pprofEnable = false
+
+log.to = "./frps.log"
+log.level = "info"
+log.maxDays = 3
+log.disablePrintColor = false
+
+auth.method = "token"
+auth.token = "xxxxx"
+
+allowPorts = [
+  { start = 10001, end = 50000 }
+]
+
+maxPortsPerClient = 8
+udpPacketSize = 1500
+natholeAnalysisDataReserveHours = 168
+```
+And, the client likes:
+```
+frpc
+
+serverAddr = "x.x.x.x"
+serverPort = 7000
+auth.method = "token"
+auth.token = "xxxxx"
+
+[[proxies]]
+name = "web1_9e1645bc"
+type = "http"
+localIP = "x.x.x.x"
+localPort = 9980
+customDomains = ["x.x.x.x"]
+
+[[proxies]]
+name = "web2_9e1645bc"
+type = "https"
+localIP = "x.x.x.x"
+localPort = 9980
+customDomains = ["x.x.x4.x"]
+
+[[proxies]]
+name = "tcp1_9e1645bc"
+type = "tcp"
+localIP = "x.x.x.x"
+localPort = 22
+remotePort = 22222
+```
+Tip: Remember to close in time after use, it will be scanned by the company.
+
+Next, we need a nameserver and an internal nginx server, each configured as follows:
+```
+internal nginx
+
+collabora.conf
+
+server {
+    listen 80;
+    charset UTF-8;
+    client_max_body_size 75M;
+
+    # static files
+    location ^~ /browser {
+      proxy_pass http://ip:port;
+      #proxy_set_header Host $http_host;
+    }
+    
+    # WOPI discovery URL
+    location ^~ /hosting/discovery {
+      proxy_pass http://ip:port;
+      #proxy_set_header Host $http_host;
+    }
+
+
+    # Capabilities
+    location ^~ /hosting/capabilities {
+      proxy_pass http://ip:port;
+      #proxy_set_header Host $http_host;
+    }
+
+
+    # main websocket
+    location ~ ^/cool/(.*)/ws$ {
+      proxy_pass http://ip:port;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "Upgrade";
+      proxy_read_timeout 36000s;
+      #proxy_set_header Host $http_host;
+    }
+    
+    
+    # download, presentation and image upload
+    location ~ ^/(c|l)ool {
+      proxy_pass http://ip:port;
+      proxy_set_header Host $http_host; 
+    }
+    
+    
+    # Admin Console websocket
+    location ^~ /cool/adminws {
+      proxy_pass http://ip:port;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "Upgrade";
+      proxy_read_timeout 36000s;
+      #proxy_set_header Host $http_host;
+    }
+}
+```
+
+The nameserver listens for 443 requests and forwards the corresponding file storage service and the collabora service, which is similar to internal nginx.
+
+For collabora office's configuration files, need to look at the following:
+```
+coolwsd.xml
+
+Enter server_name in the conf file on the nameserver:
+
+<server_name desc="External hostname:port of the server running coolwsd. If empty, it's derived from the request (please set it if this doesn't work). May be specified when behind a reverse-proxy or when the hostname is not reachable directly." type="string" default="">xxx.xxx</server_name>
+
+Set to true:
+<!-- SSL off-load can be done in a proxy, if so disable SSL, and enable termination below in production -->
+<termination desc="Connection via proxy where coolwsd acts as working via https, but actually uses http." type="bool" default="true">true</termination>
+
+Enter the address of the file storage service in the conf file of the nameserver:
+
+<group>
+    <host desc="Primary hostname to allow or deny." allow="true">https://xxx.xxx</host>
+</group>
+```
+
+It's done.
+
 
 # knowledge
 
